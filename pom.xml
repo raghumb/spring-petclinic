@@ -196,6 +196,48 @@
           </dependency>
         </dependencies>
       </plugin>
+	  <plugin>
+					<groupId>com.spotify</groupId>
+					<artifactId>docker-maven-plugin</artifactId>
+					<version>0.2.3</version>
+
+				<executions>
+					<execution>
+						<id>build-image</id>
+						<phase>install</phase>
+						<goals>
+							<goal>build</goal>
+						</goals>
+						<configuration>
+						<imageName>${image.prefix}/petclinic:v_${build.number}</imageName>
+						<dockerDirectory>${project.basedir}</dockerDirectory>
+						<pushImage>true</pushImage>
+						<resources>
+							<resource>
+								<targetPath>/</targetPath>
+								<directory>${project.build.directory}</directory>
+								<include>${project.build.finalName}.jar</include>
+							</resource>
+						</resources>
+					</configuration>
+					</execution>
+				</executions>
+					
+					
+			
+<!-- 					<configuration>
+						<imageName>${image.prefix}/eformfadwriteapp:v_${build.number}</imageName>
+						<dockerDirectory>src/main/docker</dockerDirectory>
+						<resources>
+							<resource>
+								<targetPath>/</targetPath>
+								<directory>${project.build.directory}</directory>
+								<include>${project.build.finalName}.jar</include>
+							</resource>
+						</resources>
+					</configuration> -->
+				</plugin>
+	  
     </plugins>
   </build>
   <reporting>
