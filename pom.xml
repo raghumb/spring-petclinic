@@ -209,7 +209,7 @@
 							<goal>build</goal>
 						</goals>
 						<configuration>
-						<imageName>${image.prefix}/petclinic:v_${build.number}</imageName>
+						<imageName>raghu-devops/petclinic:v_${build.number}</imageName>
 						<dockerDirectory>${project.basedir}</dockerDirectory>
 						<pushImage>true</pushImage>
 						<resources>
